@@ -48,7 +48,6 @@ def calc():
 
     try:
         data = request.get_json()
-        print(data)
         validate(instance=data, schema=schema)
     except ValidationError:
         return json.dumps({"error": "Invalid input"}), 400
@@ -66,6 +65,3 @@ def calc():
     seating = calc.new_seating(s)
 
     return jsonify(seating)
-
-if __name__ == "__main__":
-    api.run(debug=True, host="127.0.0.1", port=5001)
