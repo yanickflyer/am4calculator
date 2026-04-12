@@ -1,0 +1,16 @@
+{
+  "short_name": "AM4Calc",
+  "name": "AM4 Calculator Tool",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/599/599305.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3b82f6"
+}
