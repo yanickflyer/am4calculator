@@ -11,7 +11,8 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
 
     try {
         // 2. Send to Flask
-        const response = await fetch('http://localhost:5001/calc', {
+        const apiUrl = process.env.APP_API_URL;
+        const response = await fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
