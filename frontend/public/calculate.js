@@ -11,8 +11,9 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
 
     try {
         // 2. Send to Flask
-        const apiUrl = process.env.APP_API_URL;
-        const response = await fetch(apiUrl, {
+        const API_BASE_URL = process.env.API_URL || 'http://localhost:5001';
+
+        const response = await fetch(`${API_BASE_URL}/api`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
