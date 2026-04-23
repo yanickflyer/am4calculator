@@ -10,10 +10,8 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
     };
 
     try {
-        // 2. Send to Flask
-        const API_BASE_URL = process.env.API_URL || 'http://localhost:5001';
-
-        const response = await fetch(`${API_BASE_URL}/api`, {
+        // 2. Send to Express server (which forwards to Flask)
+        const response = await fetch('/calc', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
