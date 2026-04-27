@@ -2,6 +2,7 @@ from flask import Flask, request, json, jsonify
 from jsonschema import validate, ValidationError
 from calc import calculations
 from flask_cors import CORS
+import schemavalidator
 
 api = Flask(__name__)
 CORS(api)
@@ -13,38 +14,7 @@ def hello():
 
 @api.route("/calc", methods=["POST"])
 def calc():
-    schema = {
-        '$schema': 'http://json-schema.org/draft-07/schema#',
-        'type': 'object',
-        'properties': {
-            'plane_eco': {
-                'type': 'integer'
-            },
-            'plane_business': {
-                'type': 'integer'
-            },
-            'plane_first': {
-                'type': 'integer'
-            },
-            'demand_eco': {
-                'type': 'integer'
-            },
-            'demand_business': {
-                'type': 'integer'
-            },
-            'demand_first': {
-                'type': 'integer'
-            }
-        },
-        'required': [
-            'plane_eco',
-            'plane_business',
-            'plane_first',
-            'demand_eco',
-            'demand_business',
-            'demand_first'
-        ]
-    }
+    schema = schemavalidator.schema_ratio
 
     try:
         data = request.get_json()
@@ -65,3 +35,6 @@ def calc():
     seating = calc.new_seating(s)
 
     return jsonify(seating)
+
+if __name__ == "__main__":
+    api.run(debug=True, port=5001)
