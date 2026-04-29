@@ -32,7 +32,7 @@ document.getElementById('spreadBtn').addEventListener('click', () => {
             return [Math.ceil(demand)];
         }
 
-        const totalSeats = Math.round(demand);
+        const totalSeats = Math.ceil(demand);
         const base = Math.ceil(totalSeats / aircraftCount);
         const seats = Array(aircraftCount).fill(base);
         seats[aircraftCount - 1] = totalSeats - base * (aircraftCount - 1);
